@@ -69,7 +69,7 @@ pub fn setFindLeak(v: bool) void {
 // due to API differences but overall the same.
 pub const GcAllocator = struct {
     fn alloc(
-        _: *c_void,
+        _: *anyopaque,
         len: usize,
         alignment: u29,
         len_align: u29,
@@ -94,7 +94,7 @@ pub const GcAllocator = struct {
     }
 
     fn resize(
-        _: *c_void,
+        _: *anyopaque,
         buf: []u8,
         buf_align: u29,
         new_len: usize,
@@ -116,7 +116,7 @@ pub const GcAllocator = struct {
     }
 
     fn free(
-        _: *c_void,
+        _: *anyopaque,
         buf: []u8,
         buf_align: u29,
         return_address: usize,
